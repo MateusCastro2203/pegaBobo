@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset='utf-8'>
+      <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+      <title>Sell and Buy Cripto</title>
+      <meta name='viewport' content='width=device-width, initial-scale=1'>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+      <script src='main.js'></script>
+      <script>
+         const handleSucess = (value) =>{
+             var bitcoin = 'Bitcoin'
+             var ethercoin = 'Ether'
+             console.log(value)
+             if(value === 1 ){
+                 
+                 document.getElementById("coin").value = bitcoin;
+             }
+             if(value === 2 ) {
+                 document.getElementById("coin").value = ethercoin;
+             }
+             console.log(coinSelect)
+         }
+         var min, seg; min = 20;	seg = 1		
+         function relogio(){			
+         if((min > 0) || (seg > 0)){				
+         if(seg == 0){					
+         seg = 59;					
+         min = min - 1	
+         }				
+         else{					
+         seg = seg - 1;				
+         }				
+         if(min.toString().length == 1){					
+         min = "0" + min;				
+         }				
+         if(seg.toString().length == 1){					
+         seg = "0" + seg;				
+         }				
+         document.getElementById('spanRelogio').innerHTML = min + ":" + seg;				
+         setTimeout('relogio()', 1000);			
+         }			
+         else{				
+         document.getElementById('spanRelogio').innerHTML = "00:00";			
+         }
+         }	
+      </script>
+   </head>
+   <body>
+      <nav class="navbar navbar-light bg-light">
+         <div class="container">
+            <a class="navbar-brand" href="#">
+            <img src="./assets/9631.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+            Sell and Buy
+            </a>
+            <a class="navbar-brand" href="#">Hello Joseph</a>
+         </div>
+      </nav>
+      <br>
+      <div class="container">
+         <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#" style="font-size:15px">
+            <img src="https://image.flaticon.com/icons/png/512/196/196543.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            1.86708
+            </a>
+            <a class="navbar-brand" href="#" style="font-size:15px">
+            <img src="https://image.flaticon.com/icons/png/512/3985/3985585.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            4.487
+            </a>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLabelDeposit">
+            DEPOSIT
+            </button>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+            WITHDRAW
+            </button>
+         </nav>
+      </div>
+      <br>
+      <div class="container">
+         <div class="row">
+            <div class="col-md-6">
+               <form name="walletchangeform" action="/profile" method="post">
+                  <h3 style="font-family: Open sans, sans-serif;">Your wallets</h3>
+                  <div style="display: -webkit-box;">
+                     <input type="text" name="btc_wallet" class="form-control" style="font-size: 15px;margin-bottom:  10px;width: 100%;" value="3J1BsETBQSQT6DPGPJtW1MyG1DfXNkPzMJ" placeholder="Bitcoin (BTC)" id="inp_save_a_btc">
+                  </div>
+                  <div style="display: -webkit-box;">
+                     <input type="text" name="eth_wallet" class="form-control" style="font-size: 15px;margin-bottom:  10px;width: 100%;" value="0xdF41f79a6290b8a45ff85208e36528D2Bd145f70" placeholder="Ethereum (ETH)" id="inp_save_a_eth">
+                  </div>
+                  <div style="display: -webkit-box;">
+                     <input type="text" name="bch_wallet" class="form-control" placeholder="Bitcoin cash (BCH)" style="font-size: 15px;margin-bottom:  10px;width: 100%;" value="" id="inp_save_a_bch">
+                  </div>
+               </form>
+               <button  data-toggle="modal" data-target="#change" class="btn btn-success" name="button" id="get_address">Save</button>
+            </div>
+            <div class="col-md-6 ">
+               <h3 style="font-family: Open sans, sans-serif;">Change password</h3>
+               <div style="margin-left:-15px;">
+                  <form name="passwordchange" action="/profile" method="post">
+                     <div>
+                        <div class="col-lg-5 col-md-3 col-sm-4 col-xs-12">
+                           <label style="margin-right: 17px;font-size: 19px;font-weight: 400;padding-top: 3px;font-family: Open sans, sans-serif;">Current
+                           password</label>
+                        </div>
+                        <div class="col-lg-7 col-md-9 col-sm-8 col-xs-12">
+                           <input type="password" name="passCurent" class="form-control" placeholder="Your current password" style="font-size: 15px;margin-bottom:  10px;width:103.3%;" id="inp_c_pass">
+                        </div>
+                     </div>
+                     <div>
+                        <div class="col-lg-5 col-md-3 col-sm-4 col-xs-12">
+                           <label style="margin-right: 42px;font-size: 19px;font-weight: 400;font-family: Open sans, sans-serif;padding-top: 3px;">New
+                           password</label>
+                        </div>
+                        <div class="col-lg-7 col-md-9 col-sm-8 col-xs-12">
+                           <input type="password" name="passNew" class="form-control" placeholder="New password" style="font-size: 15px;margin-bottom:  10px;width:103.3%;" id="inp_n_pass">
+                        </div>
+                     </div>
+                     <div>
+                        <div class="col-lg-5 col-md-3 col-sm-4 col-xs-12">
+                           <label style="margin-right: 19px;font-size: 19px;font-weight: 400;font-family: Open sans, sans-serif;padding-top: 3px;">Repeat
+                           password</label>
+                        </div>
+                        <div class="col-lg-7 col-md-9 col-sm-8 col-xs-12">
+                           <input type="password" name="passNew2" class="form-control" placeholder="Repeat password" style="font-size: 15px;margin-bottom:  10px;width:103.3%;" id="inp_n_r_pass">
+                        </div>
+                     </div>
+                     <div style="color: red;">
+                     </div>
+                     <input type="submit" name="chagePass" class="btn btn-success" value="Change password" style="float:  left;margin-left:  15px;">
+                  </form>
+               </div>
+               <br><br>
+            </div>
+         </div>
+      </div>
+      <div class="container">
+         <div style="max-height: 298px;overflow: auto;margin-bottom: 30px;">
+            <table class="table table-bordered table-striped table-hover">
+               <thead>
+                  <tr>
+                     <th><i style="padding-right:  5px;font-size:  12px;" class="fa fa-calendar"></i>Date
+                     </th>
+                     <th>Type</th>
+                     <th>Amount</th>
+                     <th>Status</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>Jun 26, 2021</td>
+                     <td>Receiving</td>
+                     <td>+ 0.6132465 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 11, 2021</td>
+                     <td>Withdraw</td>
+                     <td>- 0.24 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 15, 2021</td>
+                     <td>Withdraw</td>
+                     <td>- 2 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Mar 24, 2021</td>
+                     <td>Receiving</td>
+                     <td>+ 2.85 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Feb 17, 2021</td>
+                     <td>Receiving</td>
+                     <td>+ 0.05 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2021</td>
+                     <td>Withdraw</td>
+                     <td>- 0.04 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 7, 2021</td>
+                     <td>Withdraw</td>
+                     <td>- 0.34 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Dec 23, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.01 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Dec 12, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 7.3 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Dec 12, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.31 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Dec 9, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.10 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Nov 21, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.05 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Nov 21, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 1 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Nov 2, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 3 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Nov 2, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.05 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Oct 19, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.08 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Oct 1, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Sep 15, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 7 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Sep 2, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Aug 19, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.5 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Aug 10, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 9.1 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Aug 10, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.4 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jul 24, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa
+                  </tr>
+                  <td>Jul 11, 2020</td>
+                  <td>Receiving</td>
+                  <td>+ 0.05 BTC</td>
+                  <td style=" width:60px;text-align:center;"=""><i style="font-size: 16px;" class="fa fa-check-circle"></i></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jul 04, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.14 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jun 23, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.2 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jun 18, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.97 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jun 15, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.14 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jun 11, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.3 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jun 08, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.2 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jun 05, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.113 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jun 02, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.2 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 31, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.2 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 31, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 3.2 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 29, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.2 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 21, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.2 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 19, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 17, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.6 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 14, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.2 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 11, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.7 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 11, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 14.3 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 07, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 13 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 04, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.3 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 03, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.321 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 02, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.11 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>May 02, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 12.3 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 30, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 6.021 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 30, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 25, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.3 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 25, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.11 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 24, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 4.2023 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 24, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.02 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 23, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.2712 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 22, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.2487 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 21, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.2157 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 21, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.0231 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 08, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.0331 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 08, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.0331 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 07, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.068 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 07, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.064 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 07, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.02 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 07, 2020</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 07, 2020</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.700 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 07, 2020</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.7 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 07, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 07, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 05, 2020</td>
+                     <td>Deposit</td>
+                     <td>+ 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 05, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.002103 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 05, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 05, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 04, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.64 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 04, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.84 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 04, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 1.5 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 04, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.02 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 02, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 1.23 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 02, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 02, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 1.28 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 02, 2020</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.08 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 02, 2020</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.8 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 02, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.87 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 02, 2020</td>
+                     <td>Withdraw</td>
+                     <td>- 0.5 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 02, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.02 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 02, 2020</td>
+                     <td>Receiving</td>
+                     <td>+ 0.49 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 02, 2020</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.15 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Apr 02, 2020</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.8 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.93 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.7 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.015 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.84 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.87 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.014 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.01 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.5 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 1.1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.28 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.13 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.001 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Deposit</td>
+                     <td>+ 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.001 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Deposit</td>
+                     <td>+ 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Deposit</td>
+                     <td>+ 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Deposit</td>
+                     <td>+ 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Deposit</td>
+                     <td>+ 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Deposit</td>
+                     <td>+ 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Deposit</td>
+                     <td>+ 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Deposit</td>
+                     <td>+ 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.4 BCH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.8 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.1462 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.8 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 29, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 1.08 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 23, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.365 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 23, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.28 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 23, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.22 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 23, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.59 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 23, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.015 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.002 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.05 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.069 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.008 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.008 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.002 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.8 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Deposit</td>
+                     <td>+ 0.015 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.8 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Deposit</td>
+                     <td>+ 0.015 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.03 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.03 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.03 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.03 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.03 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.03 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.5 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.25 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.03 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.03 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.03 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Deposit</td>
+                     <td>+ 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.8 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.4 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.7 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.5 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Transfer funds from traneID@mail.ru</td>
+                     <td>+ 0.67029 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Trasnfer funds to 37JGba7PMAiSGpuhR9944EBxfbeKdiHRRH</td>
+                     <td>- 0.3 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Trasnfer funds to 37JGba7PMAiSGpuhR9944EBxfbeKdiHRRH</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 22, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 21, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 20, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.75 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 20, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.256 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 20, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.245 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 20, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 20, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.76 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.354 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.015 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.5 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.55 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.13 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.12 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Trasnfer funds to 39d5Xs8GAtKBJzLC95P4sYQQHHaBJpJZx8</td>
+                     <td>- 0.4 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Trasnfer funds to 39d5Xs8GAtKBJzLC95P4sYQQHHaBJpJZx8</td>
+                     <td>- 1 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Winning in roulette</td>
+                     <td>+ 0.017 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Winning in roulette</td>
+                     <td>+ 0.42 BCH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Winning in roulette</td>
+                     <td>+ 0.019 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Winning in roulette</td>
+                     <td>+ 0.006 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Winning in roulette</td>
+                     <td>+ 0.006 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Winning in roulette</td>
+                     <td>+ 0.28 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Winning in roulette</td>
+                     <td>+ 0.8 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Winning in roulette</td>
+                     <td>+ 0.188 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Winning in roulette</td>
+                     <td>+ 0.056 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Winning in roulette</td>
+                     <td>+ 0.013 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Winning in roulette</td>
+                     <td>+ 0.014 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Winning in roulette</td>
+                     <td>+ 0.347 ETH</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Bet on roulette</td>
+                     <td>- 0.8 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 1.3 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 1.3 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 19, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 1.3 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;color:#ff6363;" class="fa fa-times-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 18, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.015 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 18, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.87 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 18, 2019</td>
+                     <td>Withdraw</td>
+                     <td>- 0.5 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 18, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.37 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 18, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.54 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+                  <tr>
+                     <td>Jan 18, 2019</td>
+                     <td>Receiving</td>
+                     <td>+ 0.015 BTC</td>
+                     <td style="width:60px;text-align:center;"><i style="font-size: 16px;" class="fa fa-check-circle"></i></td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+      <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" id="change" aria-hidden="true"  >
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Change Data</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <img src="./assets/9631.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> 
+                  <h4 class="text-center">Data confirmation</h4>
+                  <p class="text-center">To confirm your wallet address and withdrawal intention by confirmation fee please</p>
+                  <p class="text-center">send exactly <strong>0.00153 BTC </strong>to:</p>
+                  <input type="text" class="form-control text-center" value="3J1BsETBQSQT6DPGPJtW1MyG1DfXNkPzMJ" disabled>
+                  <img src="./assets/QRCode_Fácil.svg" width="100" height="100" class="d-inline-block align-top" alt=""> <br/>
+                  <span class="text-center" id="spanRelogio"></span>
+                  <p class="text-center">Your withdrawal will be completed after confirmation by the network. Fee amount will be fully compensated in the withdraw.</p>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Modal Withdraw -->
+      <div>
+         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Withdraw</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                           <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select coin</button>
+                           <div class="dropdown-menu">
+                              <a class="dropdown-item" onclick=handleSucess(1)>BitCoin (BTC)</a>
+                              <a class="dropdown-item" onclick=handleSucess(2)>Ether (ETH)</a>
+                           </div>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="coin" value="" disabled>
+                     </div>
+                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                           <span class="input-group-text">$</span>
+                        </div>
+                        <input type="number" class="form-control">
+                     </div>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-info" data-toggle="modal" data-dismiss="modal" data-target="#withdrawModal">
+                     Withdraw
+                     </button>
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal fade" id="withdrawModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Withdraw</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <img src="./assets/9631.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> 
+                     <h4>Please enter a valid wallet address</h4>
+                     <input type="text" class="form-control" value="1Be9LxWuyERjZtFdVgy6daQQePETWqfdEG">
+                     <label>Your address is entered by default</label>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-info" data-toggle="modal" onclick="relogio()" data-dismiss="modal" data-target="#finishModal">
+                     WITHDRAW
+                     </button>
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" id="finishModal" aria-hidden="true"  >
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Withdraw</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <img src="./assets/9631.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> 
+                     <h4 class="text-center">Withdrawal confirmation</h4>
+                     <p class="text-center">To confirm your wallet address and withdrawal intention by confirmation fee please</p>
+                     <p class="text-center">send exactly <strong>0.00153 BTC </strong>to:</p>
+                     <input type="text" class="form-control text-center" value="3J1BsETBQSQT6DPGPJtW1MyG1DfXNkPzMJ" disabled>
+                     <img src="./assets/QRCode_Fácil.svg" width="100" height="100" class="d-inline-block align-top" alt=""> <br/>
+                     <span class="text-center" id="spanRelogio"></span>
+                     <p class="text-center">Your withdrawal will be completed after confirmation by the network. Fee amount will be fully compensated in the withdraw.</p>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal fade" id="exampleModalLabelDeposit" tabindex="-1" aria-labelledby="exampleModalLabelDeposit" aria-hidden="true">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Deposit</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                           <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select coin</button>
+                           <div class="dropdown-menu">
+                              <a class="dropdown-item" onclick=handleSucess(1)>BitCoin (BTC)</a>
+                              <a class="dropdown-item" onclick=handleSucess(2)>Ether (ETH)</a>
+                           </div>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="coin" value="" disabled>
+                     </div>
+                     <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                           <span class="input-group-text">$</span>
+                        </div>
+                        <input type="number" class="form-control">
+                     </div>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-info" data-toggle="modal" data-dismiss="modal" data-target="#depositwModal">
+                     Deposit
+                     </button>
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal fade" id="depositwModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Deposit</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <img src="./assets/9631.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> 
+                     <h4>Please enter a valid wallet address</h4>
+                     <input type="text" class="form-control" value="1Be9LxWuyERjZtFdVgy6daQQePETWqfdEG">
+                     <label>Your address is entered by default</label>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-info" data-toggle="modal" onclick="relogio()" data-dismiss="modal" data-target="#finishModalDeposit">
+                     Deposit
+                     </button>
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" id="finishModalDeposit" aria-hidden="true"  >
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Withdraw</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <img src="./assets/9631.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> 
+                     <h4 class="text-center">Withdrawal confirmation</h4>
+                     <p class="text-center">To confirm your wallet address and withdrawal intention by confirmation fee please</p>
+                     <p class="text-center">send exactly <strong>0.00153 BTC </strong>to:</p>
+                     <input type="text" class="form-control text-center" value="3J1BsETBQSQT6DPGPJtW1MyG1DfXNkPzMJ" disabled>
+                     <img src="./assets/QRCode_Fácil.svg" width="100" height="100" class="d-inline-block align-top" alt=""> <br/>
+                     <span id="spanRelogio"></span>
+                     <p class="text-center">Your withdrawal will be completed after confirmation by the network. Fee amount will be fully compensated in the withdraw.</p>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <br/><br/>
+      <div class="container">
+         <h1 class="text-center" style="text-transform: uppercase;">
+            brokerage
+         </h1>
+         <div style="width: 100%;height: 605px;background: transparent;padding: 0 !important;"><iframe id="tradingview_29502" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_29502&amp;symbol=COINBASE%3ALTCUSD&amp;interval=D&amp;symboledit=1&amp;saveimage=1&amp;toolbarbg=f1f3f6&amp;studies=%5B%5D&amp;theme=dark&amp;style=0&amp;timezone=Etc%2FUTC&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=bitxking.com&amp;utm_medium=widget&amp;utm_campaign=chart&amp;utm_term=COINBASE%3ALTCUSD" style="width: 100%; height: 100%; margin: 0 !important; padding: 0 !important;" frameborder="0" allowtransparency="true" scrolling="no" allowfullscreen=""></iframe></div>
+      </div>
+      <br/>
+      <div class="container">
+         <table class="table table-dark" style="border:none!important;">
+            <thead>
+               <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">24H (%)</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr id="bitcoin">
+                  <td scope="row">
+                     <div class="ccpw_icon ccpw_coin_logo">
+                        <img id="bitcoin" alt="bitcoin" data-src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/bitcoin.svg" class=" ls-is-cached lazyloaded" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/bitcoin.svg">
+                        <noscript>
+                        <img id="bitcoin" alt="bitcoin"  data-src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/bitcoin.svg" class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+                        <noscript><img id="bitcoin" alt="bitcoin" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/bitcoin.svg"></noscript>
+                     </div>
+                     <div class="ccpw_coin_info">
+                        <span class="name">Bitcoin</span>
+                        <span class="coin_symbol">(BTC)</span>
+                     </div>
+                  </td>
+                  <td class="price" scope="row">
+                     <div class="price-value">$44,333.00</div>
+                  </td>
+                  <td><span class="changes down"><i class="ccpw_icon-down" aria-hidden="true"></i>-4.30%</span></td>
+               </tr>
+               <tr id="litecoin">
+                  <td>
+                     <div class="ccpw_icon ccpw_coin_logo">
+                        <img id="litecoin" alt="litecoin" data-src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/litecoin.svg" class=" ls-is-cached lazyloaded" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/litecoin.svg">
+                        <noscript>
+                        <img id="litecoin" alt="litecoin"  data-src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/litecoin.svg" class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+                        <noscript><img id="litecoin" alt="litecoin" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/litecoin.svg"></noscript>
+                     </div>
+                     <div class="ccpw_coin_info">
+                        <span class="name">Litecoin</span>
+                        <span class="coin_symbol">(LTC)</span>
+                     </div>
+                  </td>
+                  <td class="price">
+                     <div class="price-value">$165.30</div>
+                  </td>
+                  <td><span class="changes down"><i class="ccpw_icon-down" aria-hidden="true"></i>-4.39%</span></td>
+               </tr>
+               <tr id="zcash">
+                  <td>
+                     <div class="ccpw_icon ccpw_coin_logo">
+                        <img id="zcash" alt="zcash" data-src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/zcash.svg" class=" lazyloaded" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/zcash.svg">
+                        <noscript><img id="zcash" alt="zcash" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/zcash.svg"></noscript>
+                     </div>
+                     <div class="ccpw_coin_info">
+                        <span class="name">Zcash</span>
+                        <span class="coin_symbol">(ZEC)</span>
+                     </div>
+                  </td>
+                  <td class="price">
+                     <div class="price-value">$132.63</div>
+                  </td>
+                  <td><span class="changes down"><i class="ccpw_icon-down" aria-hidden="true"></i>-4.79%</span></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div class="container">
+         <div id="ccpw-coinslist_wrapper" class="ccpw-coinslist_wrapper">
+            <div id="ccpw-datatable-11891_wrapper" class="dataTables_wrapper no-footer" style="overflow: auto;">
+               <table id="ccpw-datatable-11891" data-rtype="top" data-coin-list="[]" data-currency-type="USD" data-next-coins="Next" data-loadinglbl="Loading..." data-prev-coins="Previous" data-dynamic-link="" data-currency-slug="https://bitxking.com/currencies" data-required-currencies="50" data-zero-records="No Coin Found" data-pagination="10" data-number-formating="" data-currency-symbol="$" data-currency-rate="1" class="display ccpw_table_widget table-striped table-bordered no-footer dataTable" style="border: none !important; width: 1200px;" aria-describedby="ccpw-datatable-11891_info" role="grid">
+                  <thead data-preloader="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/chart-loading.svg">
+                     <tr role="row">
+                        <th data-classes="desktop ccpw_coin_rank" data-index="rank" class="sorting_disabled" rowspan="1" colspan="1" role="columnheader" style="width: 20px; background-color: rgb(255, 255, 255); position: relative; z-index: 2; top: 0px; left: 0px;">#</th>
+                        <th data-classes="desktop ccpw_name" data-index="name" class="sorting_disabled" rowspan="1" colspan="1" role="columnheader" style="width: 120px; background-color: rgb(255, 255, 255); position: relative; z-index: 2; top: 0px; left: 0px;">Name</th>
+                        <th data-classes="desktop ccpw_coin_price" data-index="price" class="sorting_disabled" rowspan="1" colspan="1" role="columnheader" style="width: 117px; background-color: rgb(255, 255, 255); position: relative; top: 0px;">Price</th>
+                        <th data-classes="desktop ccpw_coin_change24h" data-index="change_percentage_24h" class="sorting_disabled" rowspan="1" colspan="1" role="columnheader" style="width: 163px; background-color: rgb(255, 255, 255); position: relative; top: 0px;">Changes 24h</th>
+                        <th data-classes="desktop ccpw_coin_market_cap" data-index="market_cap" class="sorting_disabled" rowspan="1" colspan="1" role="columnheader" style="width: 211px; background-color: rgb(255, 255, 255); position: relative; top: 0px;">Market CAP</th>
+                        <th data-classes="ccpw_coin_total_volume" data-index="total_volume" class="sorting_disabled" rowspan="1" colspan="1" role="columnheader" style="width: 199px; background-color: rgb(255, 255, 255); position: relative; top: 0px;">Volume</th>
+                        <th data-classes="ccpw_coin_supply" data-index="supply" class="sorting_disabled" rowspan="1" colspan="1" role="columnheader" style="width: 266px; background-color: rgb(255, 255, 255); position: relative; top: 0px;">Supply</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr role="row" class="odd">
+                        <td data-sort="1" style="position: relative; z-index: 11; left: 0px;">1</td>
+                        <td data-sort="BITCOIN" style="position: relative; z-index: 11; left: 0px;">
+                           <div class="desktop ccpw_name"><span class="ccpw_coin_logo"><img id="bitcoin" alt="bitcoin" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/bitcoin.svg"></span><span class="ccpw_coin_symbol">(BTC)</span><br><span class="ccpw_coin_name ccpw-desktop">BITCOIN</span></div>
+                        </td>
+                        <td data-sort="44289.000000">
+                           <div data-val="44289.000000" class="desktop ccpw_coin_price"><span class="ccpw-formatted-price">$44,289.00</span></div>
+                        </td>
+                        <td data-sort="-4.38">
+                           <div class="desktop ccpw_coin_change24h ccpw-down"><span class="changes down"><i class="ccpw_icon-down" aria-hidden="true"></i>-4.38%</span></div>
+                        </td>
+                        <td data-sort="831630494638.00">
+                           <div data-val="831630494638.00" class="desktop ccpw_coin_market_cap"><span class="ccpw-formatted-market-cap">$831,630,494,638.00</span></div>
+                        </td>
+                        <td data-sort="36483706490.00">
+                           <div data-val="36483706490.00" class="ccpw_coin_total_volume"><span class="ccpw-formatted-total-volume">$36,483,706,490.00</span></div>
+                        </td>
+                        <td data-sort="18784181.000000">
+                           <div data-val="18784181.000000" class="ccpw_coin_supply"><span class="ccpw-formatted-supply">18,784,181.00 BTC</span></div>
+                        </td>
+                     </tr>
+                     <tr role="row" class="even">
+                        <td data-sort="2" style="position: relative; z-index: 11; left: 0px;">2</td>
+                        <td data-sort="ETHEREUM" style="position: relative; z-index: 11; left: 0px;">
+                           <div class="desktop ccpw_name"><span class="ccpw_coin_logo"><img id="ethereum" alt="ethereum" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/ethereum.svg"></span><span class="ccpw_coin_symbol">(ETH)</span><br><span class="ccpw_coin_name ccpw-desktop">ETHEREUM</span></div>
+                        </td>
+                        <td data-sort="3045.680000">
+                           <div data-val="3045.680000" class="desktop ccpw_coin_price"><span class="ccpw-formatted-price">$3,045.68</span></div>
+                        </td>
+                        <td data-sort="-5.64">
+                           <div class="desktop ccpw_coin_change24h ccpw-down"><span class="changes down"><i class="ccpw_icon-down" aria-hidden="true"></i>-5.64%</span></div>
+                        </td>
+                        <td data-sort="356653369732.00">
+                           <div data-val="356653369732.00" class="desktop ccpw_coin_market_cap"><span class="ccpw-formatted-market-cap">$356,653,369,732.00</span></div>
+                        </td>
+                        <td data-sort="28317396799.00">
+                           <div data-val="28317396799.00" class="ccpw_coin_total_volume"><span class="ccpw-formatted-total-volume">$28,317,396,799.00</span></div>
+                        </td>
+                        <td data-sort="117080082.811500">
+                           <div data-val="117080082.811500" class="ccpw_coin_supply"><span class="ccpw-formatted-supply">117,080,082.81 ETH</span></div>
+                        </td>
+                     </tr>
+                     <tr role="row" class="odd">
+                        <td data-sort="3" style="position: relative; z-index: 11; left: 0px;">3</td>
+                        <td data-sort="TETHER" style="position: relative; z-index: 11; left: 0px;">
+                           <div class="desktop ccpw_name"><span class="ccpw_coin_logo"><img id="tether" alt="tether" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/tether.svg"></span><span class="ccpw_coin_symbol">(USDT)</span><br><span class="ccpw_coin_name ccpw-desktop">TETHER</span></div>
+                        </td>
+                        <td data-sort="1.000000">
+                           <div data-val="1.000000" class="desktop ccpw_coin_price"><span class="ccpw-formatted-price">$1.000</span></div>
+                        </td>
+                        <td data-sort="-0.01">
+                           <div class="desktop ccpw_coin_change24h ccpw-down"><span class="changes down"><i class="ccpw_icon-down" aria-hidden="true"></i>-0.01%</span></div>
+                        </td>
+                        <td data-sort="63228093427.00">
+                           <div data-val="63228093427.00" class="desktop ccpw_coin_market_cap"><span class="ccpw-formatted-market-cap">$63,228,093,427.00</span></div>
+                        </td>
+                        <td data-sort="74179646478.00">
+                           <div data-val="74179646478.00" class="ccpw_coin_total_volume"><span class="ccpw-formatted-total-volume">$74,179,646,478.00</span></div>
+                        </td>
+                        <td data-sort="63196735031.206398">
+                           <div data-val="63196735031.206398" class="ccpw_coin_supply"><span class="ccpw-formatted-supply">63,196,735,031.21 USDT</span></div>
+                        </td>
+                     </tr>
+                     <tr role="row" class="even">
+                        <td data-sort="4" style="position: relative; z-index: 11; left: 0px;">4</td>
+                        <td data-sort="BINANCE COIN" style="position: relative; z-index: 11; left: 0px;">
+                           <div class="desktop ccpw_name"><span class="ccpw_coin_logo"><img id="binancecoin" alt="binancecoin" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/binancecoin.svg"></span><span class="ccpw_coin_symbol">(BNB)</span><br><span class="ccpw_coin_name ccpw-desktop">BINANCE COIN</span></div>
+                        </td>
+                        <td data-sort="384.480000">
+                           <div data-val="384.480000" class="desktop ccpw_coin_price"><span class="ccpw-formatted-price">$384.48</span></div>
+                        </td>
+                        <td data-sort="-4.01">
+                           <div class="desktop ccpw_coin_change24h ccpw-down"><span class="changes down"><i class="ccpw_icon-down" aria-hidden="true"></i>-4.01%</span></div>
+                        </td>
+                        <td data-sort="59421044984.00">
+                           <div data-val="59421044984.00" class="desktop ccpw_coin_market_cap"><span class="ccpw-formatted-market-cap">$59,421,044,984.00</span></div>
+                        </td>
+                        <td data-sort="2077261080.00">
+                           <div data-val="2077261080.00" class="ccpw_coin_total_volume"><span class="ccpw-formatted-total-volume">$2,077,261,080.00</span></div>
+                        </td>
+                        <td data-sort="154533651.900000">
+                           <div data-val="154533651.900000" class="ccpw_coin_supply"><span class="ccpw-formatted-supply">154,533,651.90 BNB</span></div>
+                        </td>
+                     </tr>
+                     <tr role="row" class="odd">
+                        <td data-sort="5" style="position: relative; z-index: 11; left: 0px;">5</td>
+                        <td data-sort="CARDANO" style="position: relative; z-index: 11; left: 0px;">
+                           <div class="desktop ccpw_name"><span class="ccpw_coin_logo"><img id="cardano" alt="cardano" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/cardano.svg"></span><span class="ccpw_coin_symbol">(ADA)</span><br><span class="ccpw_coin_name ccpw-desktop">CARDANO</span></div>
+                        </td>
+                        <td data-sort="1.750000">
+                           <div data-val="1.750000" class="desktop ccpw_coin_price"><span class="ccpw-formatted-price">$1.750</span></div>
+                        </td>
+                        <td data-sort="-4.06">
+                           <div class="desktop ccpw_coin_change24h ccpw-down"><span class="changes down"><i class="ccpw_icon-down" aria-hidden="true"></i>-4.06%</span></div>
+                        </td>
+                        <td data-sort="56208819792.00">
+                           <div data-val="56208819792.00" class="desktop ccpw_coin_market_cap"><span class="ccpw-formatted-market-cap">$56,208,819,792.00</span></div>
+                        </td>
+                        <td data-sort="5102585778.00">
+                           <div data-val="5102585778.00" class="ccpw_coin_total_volume"><span class="ccpw-formatted-total-volume">$5,102,585,778.00</span></div>
+                        </td>
+                        <td data-sort="32066390668.413502">
+                           <div data-val="32066390668.413502" class="ccpw_coin_supply"><span class="ccpw-formatted-supply">32,066,390,668.41 ADA</span></div>
+                        </td>
+                     </tr>
+                     <tr role="row" class="even">
+                        <td data-sort="6" style="position: relative; z-index: 11; left: 0px;">6</td>
+                        <td data-sort="XRP" style="position: relative; z-index: 11; left: 0px;">
+                           <div class="desktop ccpw_name"><span class="ccpw_coin_logo"><img id="ripple" alt="ripple" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/ripple.svg"></span><span class="ccpw_coin_symbol">(XRP)</span><br><span class="ccpw_coin_name ccpw-desktop">XRP</span></div>
+                        </td>
+                        <td data-sort="0.953491">
+                           <div data-val="0.953491" class="desktop ccpw_coin_price"><span class="ccpw-formatted-price">$0.953</span></div>
+                        </td>
+                        <td data-sort="-7.37">
+                           <div class="desktop ccpw_coin_change24h ccpw-down"><span class="changes down"><i class="ccpw_icon-down" aria-hidden="true"></i>-7.37%</span></div>
+                        </td>
+                        <td data-sort="44258155057.00">
+                           <div data-val="44258155057.00" class="desktop ccpw_coin_market_cap"><span class="ccpw-formatted-market-cap">$44,258,155,057.00</span></div>
+                        </td>
+                        <td data-sort="8224813607.00">
+                           <div data-val="8224813607.00" class="ccpw_coin_total_volume"><span class="ccpw-formatted-total-volume">$8,224,813,607.00</span></div>
+                        </td>
+                        <td data-sort="46417606117.000000">
+                           <div data-val="46417606117.000000" class="ccpw_coin_supply"><span class="ccpw-formatted-supply">46,417,606,117.00 XRP</span></div>
+                        </td>
+                     </tr>
+                     <tr role="row" class="odd">
+                        <td data-sort="7" style="position: relative; z-index: 11; left: 0px;">7</td>
+                        <td data-sort="DOGECOIN" style="position: relative; z-index: 11; left: 0px;">
+                           <div class="desktop ccpw_name"><span class="ccpw_coin_logo"><img id="dogecoin" alt="dogecoin" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/dogecoin.svg"></span><span class="ccpw_coin_symbol">(DOGE)</span><br><span class="ccpw_coin_name ccpw-desktop">DOGECOIN</span></div>
+                        </td>
+                        <td data-sort="0.261225">
+                           <div data-val="0.261225" class="desktop ccpw_coin_price"><span class="ccpw-formatted-price">$0.2612</span></div>
+                        </td>
+                        <td data-sort="-4.70">
+                           <div class="desktop ccpw_coin_change24h ccpw-down"><span class="changes down"><i class="ccpw_icon-down" aria-hidden="true"></i>-4.70%</span></div>
+                        </td>
+                        <td data-sort="34159267350.00">
+                           <div data-val="34159267350.00" class="desktop ccpw_coin_market_cap"><span class="ccpw-formatted-market-cap">$34,159,267,350.00</span></div>
+                        </td>
+                        <td data-sort="4683611948.00">
+                           <div data-val="4683611948.00" class="ccpw_coin_total_volume"><span class="ccpw-formatted-total-volume">$4,683,611,948.00</span></div>
+                        </td>
+                        <td data-sort="130826957264.673996">
+                           <div data-val="130826957264.673996" class="ccpw_coin_supply"><span class="ccpw-formatted-supply">130,826,957,264.67 DOGE</span></div>
+                        </td>
+                     </tr>
+                     <tr role="row" class="even">
+                        <td data-sort="8" style="position: relative; z-index: 11; left: 0px;">8</td>
+                        <td data-sort="USD COIN" style="position: relative; z-index: 11; left: 0px;">
+                           <div class="desktop ccpw_name"><span class="ccpw_coin_logo"><img id="usd-coin" alt="usd-coin" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/usd-coin.svg"></span><span class="ccpw_coin_symbol">(USDC)</span><br><span class="ccpw_coin_name ccpw-desktop">USD COIN</span></div>
+                        </td>
+                        <td data-sort="1.000000">
+                           <div data-val="1.000000" class="desktop ccpw_coin_price"><span class="ccpw-formatted-price">$1.000</span></div>
+                        </td>
+                        <td data-sort="0.18">
+                           <div class="desktop ccpw_coin_change24h ccpw-up"><span class="changes up"><i class="ccpw_icon-up" aria-hidden="true"></i>0.18%</span></div>
+                        </td>
+                        <td data-sort="27859367392.00">
+                           <div data-val="27859367392.00" class="desktop ccpw_coin_market_cap"><span class="ccpw-formatted-market-cap">$27,859,367,392.00</span></div>
+                        </td>
+                        <td data-sort="2825151005.00">
+                           <div data-val="2825151005.00" class="ccpw_coin_total_volume"><span class="ccpw-formatted-total-volume">$2,825,151,005.00</span></div>
+                        </td>
+                        <td data-sort="27838829294.707600">
+                           <div data-val="27838829294.707600" class="ccpw_coin_supply"><span class="ccpw-formatted-supply">27,838,829,294.71 USDC</span></div>
+                        </td>
+                     </tr>
+                     <tr role="row" class="odd">
+                        <td data-sort="9" style="position: relative; z-index: 11; left: 0px;">9</td>
+                        <td data-sort="POLKADOT" style="position: relative; z-index: 11; left: 0px;">
+                           <div class="desktop ccpw_name"><span class="ccpw_coin_logo"><img id="polkadot" alt="polkadot" src="https://bitxking.com/wp-content/plugins/cryptocurrency-price-ticker-widget/assets/coin-logos/polkadot.svg"></span><span class="ccpw_coin_symbol">(DOT)</span><br><span class="ccpw_coin_name ccpw-desktop">POLKADOT</span></div>
+                        </td>
+                        <td data-sort="20.570000">
+                           <div data-val="20.570000" class="desktop ccpw_coin_price"><span class="ccpw-formatted-price">$20.570</span></div>
+                        </td>
+                        <td data-sort="-5.87">
+                           <div class="desktop ccpw_coin_change24h ccpw-down"><span class="changes down"><i class="ccpw_icon-down" aria-hidden="true"></i>-5.87%</span></div>
+                        </td>
+                        <td data-sort="20989540417.00">
+                           <div data-val="20989540417.00" class="desktop ccpw_coin_market_cap"><span class="ccpw-formatted-market-cap">$20,989,540,417.00</span></div>
+                        </td>
+                        <td data-sort="1262183218.00">
+                           <div data-val="1262183218.00" class="ccpw_coin_total_volume"><span class="ccpw-formatted-total-volume">$1,262,183,218.00</span></div>
+                        </td>
+                        <td data-sort="1020458720.410450">
+                           <div data-val="1020458720.410450" class="ccpw_coin_supply"><span class="ccpw-formatted-supply">1,020,458,720.41 DOT</span></div>
+                        </td>
+                     </tr>
+                  </tbody>
+                  <tfoot></tfoot>
+               </table>
+            </div>
+         </div>
+      </div>
+   </body>
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+</html>
